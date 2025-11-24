@@ -1,7 +1,7 @@
 <?php
 // config.php: conexión PDO a MariaDB
 
-$DB_HOST = getenv('DB_HOST') ?: 'mariadb';  // nombre del servicio en docker-compose o 'localhost'
+$DB_HOST = getenv('DB_HOST') ?: 'mariadb';  // nombre del servicio en docker-compose
 $DB_NAME = getenv('DB_NAME') ?: 'logsdb';
 $DB_USER = getenv('DB_USER') ?: 'logsuser';
 $DB_PASS = getenv('DB_PASS') ?: 'logspass';

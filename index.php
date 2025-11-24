@@ -1,9 +1,6 @@
 <?php
 require_once __DIR__ . '/config.php';
 
-// Título fijo de la página
-$pageTitle = 'Visor de eventos de la práctica Docker + MariaDB';
-
 // Traer logs desde la base de datos
 try {
     $stmt = $pdo->prepare("
@@ -21,7 +18,6 @@ try {
     exit;
 }
 
-// Función pequeñita para escapar HTML
 function h($value) {
     return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
 }
@@ -138,7 +134,7 @@ function h($value) {
 </head>
 <body>
 <header>
-    <h1><?= h($pageTitle) ?></h1>
+    <h1>Visor de eventos de la práctica 2 Docker con WebApp + MariaDB</h1>
 </header>
 <main>
     <section class="card">
@@ -181,7 +177,7 @@ function h($value) {
         <?php endif; ?>
 
         <div class="footer">
-            Página generada para la práctica de Docker + Vagrant + Nginx + MariaDB.
+            Práctica 2 - Vagrant + Docker + Nginx con PHP + MariaDB.
         </div>
     </section>
 </main>
