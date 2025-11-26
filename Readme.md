@@ -1,4 +1,4 @@
-## Descripción del dato almacenado en la base de datos
+## Descripción de los datos almacenados en la base de datos
 
 La base de datos contiene una tabla llamada **event_logs** que almacena eventos simulados del sistema, como si fueran logs reales de una aplicación o servidor.
 Cada fila representa un evento individual.
