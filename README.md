@@ -147,6 +147,11 @@ services:
 
   mariadb:
     image: mariadb:11
+    environment:
+      MARIADB_ROOT_PASSWORD: rootpass
+      MARIADB_DATABASE: logsdb
+      MARIADB_USER: logsuser
+      MARIADB_PASSWORD: logspass
     volumes:
       - ./db/db_init.sql:/docker-entrypoint-initdb.d/db_init.sql:ro
       - db_data:/var/lib/mysql
@@ -167,6 +172,8 @@ volumes:
 
 - **`image: mariadb:11`**  
   Usa la imagen oficial de MariaDB, versión 11.
+- **`environment`**
+Define las variables de entorno para que la app Node.js se conecte a MariaDB.
 - **`volumes`**  
   - `./db/db_init.sql:/docker-entrypoint-initdb.d/db_init.sql:ro`  
     Monta el script de inicialización en el directorio especial que MariaDB ejecuta al crear el datadir por primera vez.
