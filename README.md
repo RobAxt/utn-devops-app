@@ -301,4 +301,28 @@ docker compose up -d --build
 
 ---
 
-Este README describe la aplicación actual, sus archivos Docker y la base de datos asociada, de manera que pueda ser utilizada y entendida como parte de un trabajo práctico con Vagrant, Docker y MariaDB.
+
+---
+
+## 9. Pruebas unitarias
+
+Para permitir la ejecución de pruebas unitarias sobre la aplicación Node.js se realizaron los siguientes cambios:
+
+- **Se instaló Jest y Supertest** como dependencias de desarrollo en la carpeta `app/`.
+- **Se creó el archivo `server.test.js`** con una prueba básica que verifica la respuesta HTTP de la ruta principal (`/`).
+- **Se refactorizó `server.js`** para exportar la instancia de Express (`module.exports = app`) en vez de iniciar el servidor directamente. El arranque del servidor se movió a `start.js`.
+- **El puerto por defecto del servidor se cambió a 8081** para evitar conflictos y problemas de permisos durante los tests.
+- **La configuración de la base de datos se adaptó** para que, si la variable de entorno `NODE_ENV` es `test`, el host de la base de datos sea `localhost` en vez de `mariadb`. Esto permite que los tests accedan a MariaDB cuando se publica el puerto 3306 al host.
+- **Se agregó la publicación del puerto 3306** en el servicio `mariadb` del `docker-compose.yml` para permitir la conexión desde el entorno de desarrollo y de pruebas.
+
+### Ejecución de pruebas
+
+Para ejecutar las pruebas unitarias:
+
+```bash
+NODE_ENV=test npm test --prefix app
+```
+
+Esto ejecuta Jest en modo test, conectando a la base de datos local si está disponible.
+
+---

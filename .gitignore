@@ -1,0 +1,39 @@
+# Node.js
+node_modules/
+app/node_modules/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.*
+
+# MariaDB Docker volume
+/db_data/
+
+# VSCode
+.vscode/
+
+# Coverage
+coverage/
+
+# Build
+/dist/
+
+# Docker
+*.pid
+
+# Misc
+*.swp
+*.swo
+
+# Ignore test output
+jest-test-results.json

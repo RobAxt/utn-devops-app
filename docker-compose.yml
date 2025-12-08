@@ -3,7 +3,7 @@ services:
   webapp:
     build: .
     ports:
-      - "8080:80"
+      - "8081:80"
 
   mariadb:
     image: mariadb:11
@@ -12,6 +12,8 @@ services:
       MARIADB_DATABASE: logsdb
       MARIADB_USER: logsuser
       MARIADB_PASSWORD: logspass
+    ports:
+      - "3306:3306"
     volumes:
       - ./db/db_init.sql:/docker-entrypoint-initdb.d/db_init.sql:ro
       - db_data:/var/lib/mysql

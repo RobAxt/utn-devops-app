@@ -7,7 +7,7 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 
 // Config de DB (coinciden con docker-compose)
-const DB_HOST = process.env.DB_HOST || 'mariadb';
+const DB_HOST = process.env.NODE_ENV === 'test' ? 'localhost' : (process.env.DB_HOST || 'mariadb');
 const DB_NAME = process.env.DB_NAME || 'logsdb';
 const DB_USER = process.env.DB_USER || 'logsuser';
 const DB_PASS = process.env.DB_PASS || 'logspass';
@@ -347,6 +347,4 @@ app.post('/add-event', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Servidor Node.js escuchando en puerto ${PORT}`);
-});
+module.exports = { app, pool };
